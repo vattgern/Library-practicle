@@ -28,7 +28,7 @@
     <!-- * Форма Авторизации -->
     <div class="auth">
         <h1>Авторизуйтесь</h1>
-        <form action="post">
+        <form action="../vendor/php/auth.php" method="post">
             <label for="email">
                 Введите почту
                 <input type="email" name="email" id="email">
@@ -39,7 +39,7 @@
             </label>
             <button type="submit">Войти</button>
             <div class="create">
-                <p>Нет, аккаунта? <a href="registration.html">Зарегистрируйтесь</a></p>
+                <p>Нет, аккаунта? <a href="registration.php">Зарегистрируйтесь</a></p>
             </div>
         </form>
     </div>

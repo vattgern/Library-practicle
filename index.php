@@ -19,7 +19,7 @@
             <ul>
                 <li><a href="#">Главная</a></li>
                 <li class="middle"><a href="#">Каталог</a></li>
-                <li><a href="assets/pages/logIn.html">Вход</a></li>
+                <li><a href="assets/pages/logIn.php">Вход</a></li>
             </ul>
         </nav>
     </header>

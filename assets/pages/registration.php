@@ -17,9 +17,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="../../index.html">Главная</a></li>
+                <li><a href="../../index.php">Главная</a></li>
                 <li class="middle"><a href="#">Каталог</a></li>
-                <li><a href="logIn.html">Вход</a></li>
+                <li><a href="logIn.php">Вход</a></li>
             </ul>
         </nav>
     </header>
@@ -28,7 +28,15 @@
     <!-- * Форма Авторизации -->
     <div class="auth">
         <h1>Зарегистрируйтесь</h1>
-        <form action="post">
+        <form action="../vendor/php/signup.php" method="post">
+            <label for="first_name">
+                Введите имя
+                <input type="text" name="first_name" id="first_name">
+            </label>
+            <label for="last_name">
+                Введите фамилию
+                <input type="text" name="last_name" id="last_name">
+            </label>
             <label for="email">
                 Введите почту
                 <input type="email" name="email" id="email">
@@ -37,13 +45,13 @@
                 Введите пароль
                 <input type="password" name="password" id="password">
             </label>
-            <label for="password">
+            <label for="password_two">
                 Введите пароль заного
-                <input type="password" name="password" id="password">
+                <input type="password" name="password_two" id="password_two">
             </label>
             <button type="submit">Зарегистрирваться</button>
             <div class="create">
-                <p>Есть, аккаунт <a href="logIn.html">Войдите</a></p>
+                <p>Есть, аккаунт <a href="logIn.php">Войдите</a></p>
             </div>
         </form>
     </div>
