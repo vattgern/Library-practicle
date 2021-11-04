@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -23,7 +26,7 @@
             </label>
         </div>
         <div class="profile">
-            <div class="name">FirstName LastName</div>
+            <div class="name"><?= $_SESSION['user']['name'] ?></div>
             <img src="" alt="Здесь типо ава">
         </div>
     </header>

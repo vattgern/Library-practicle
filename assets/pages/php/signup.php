@@ -10,11 +10,11 @@ $password = $_POST["password"];
 $password_two = $_POST["password_two"];
 
 if(checkPass($password,$password_two)){
-    $password = md5($password, 'lidjiev');
+    $password = md5($password);
     mysqli_query($connect, "INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES (NULL, '$fullName', '$email', '$password')");
     $_SESSION['message'] = "Регистрация прошла успешно";
-    header("Location ../../pages/logIn.php");
+    header("Location: ../logIn.php");
 } else{
     $_SESSION['message'] = 'Пароли не совпадают';
-    header("Location ../../pages/registration.php");
+    header("Location: ../registration.php");
 }

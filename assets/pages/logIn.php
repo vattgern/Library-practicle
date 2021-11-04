@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -28,7 +31,7 @@
     <!-- * Форма Авторизации -->
     <div class="auth">
         <h1>Авторизуйтесь</h1>
-        <form action="../vendor/php/auth.php" method="post">
+        <form action="php/auth.php" method="post">
             <label for="email">
                 Введите почту
                 <input type="email" name="email" id="email">
@@ -41,6 +44,14 @@
             <div class="create">
                 <p>Нет, аккаунта? <a href="registration.php">Зарегистрируйтесь</a></p>
             </div>
+            <?php
+                if(!empty($_SESSION['message'])){
+                    echo "<strong style='color: red; font-size: 1.25rem; text-align: center'>{$_SESSION['message']}</strong>";
+                    unset($_SESSION['message']);
+                } else{
+                    $_SESSION['message'] = '';
+                }
+            ?>
         </form>
     </div>
     <!-- !------------------------------------------------------------------- -->
