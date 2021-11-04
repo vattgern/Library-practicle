@@ -1,5 +1,8 @@
 <?php
 session_start();
+if(!empty($_SESSION['user'])){
+    header("Location: catalog.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">

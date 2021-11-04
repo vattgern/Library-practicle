@@ -60,3 +60,12 @@ header div input[type="search"]{
     width: 60%;
     text-align: center;
 }
+/* * Drop menu */
+.drop__menu{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: purple;
+    width: 100px;
+    height: 200px;
+}

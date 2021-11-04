@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!empty($_SESSION['user'])){
+    header("Location: assets/pages/catalog.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
