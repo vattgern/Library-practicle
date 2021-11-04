@@ -27,12 +27,16 @@ session_start();
         </div>
         <div class="profile">
             <div class="name"><?= $_SESSION['user']['name'] ?></div>
-            <img src="" alt="Здесь типо ава">
+            <img src="" alt="Типо ава">
+            <div class="menu__icon"></div>
         </div>
     </header>
+    <!-- ! ------------------------------------------------- -->
+    <!-- ! ------------------------------------------------- -->
+    <!-- * Меню пользователя   -->
     <div class="drop__menu">
         <ul>
-            <li><a href="#">Настройки профиля</a></li>
+            <li><a href="#">Настройки</a></li>
             <li><a href="php/logout.php">Выход</a></li>
         </ul>
     </div>
@@ -50,5 +54,6 @@ session_start();
         </div>
     </div>
     <!-- ! ------------------------------------------------- -->
+    <script src="../js/drop_menu-catalog.js"></script>
 </body>
 </html>
