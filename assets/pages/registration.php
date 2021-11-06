@@ -34,7 +34,7 @@ if(!empty($_SESSION['user'])){
     <!-- * Форма Авторизации -->
     <div class="auth">
         <h1>Зарегистрируйтесь</h1>
-        <form action="php/signup.php" method="post">
+        <form action="php/signup.php" method="post" enctype="multipart/form-data">
             <label for="first_name">
                 Введите имя
                 <input type="text" name="first_name" id="first_name">
@@ -46,6 +46,9 @@ if(!empty($_SESSION['user'])){
             <label for="email">
                 Введите почту
                 <input type="email" name="email" id="email">
+            </label>
+            <label for="avatar">
+                <input type="file" name="avatar" id="avatar">
             </label>
             <label for="password">
                 Введите пароль

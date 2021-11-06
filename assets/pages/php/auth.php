@@ -18,7 +18,8 @@ if($result == false){
         $_SESSION['user'] = [
             "id" => $user['id'],
             "name" => $user['name'],
-            "email" => $user['email']
+            "email" => $user['email'],
+            "avatar" => $user['avatar']
         ];
         $_SESSION['message'] = "Вход выполнен";
         header("Location: ../catalog.php");

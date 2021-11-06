@@ -27,7 +27,7 @@ session_start();
         </div>
         <div class="profile">
             <div class="name"><?= $_SESSION['user']['name'] ?></div>
-            <img src="" alt="Типо ава">
+            <img src="<?= '/' .$_SESSION['user']['avatar']?>" alt=''>
             <div class="menu__icon"></div>
         </div>
     </header>
