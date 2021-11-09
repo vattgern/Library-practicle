@@ -5,7 +5,7 @@ require 'connect.php';
 $email =$_POST['email'];
 $password = md5($_POST['password']);
 
-$result = $connect->query("SELECT * FROM  `users` WHERE `email`='$email' AND `password`='$password'");
+$result = $database->query("SELECT * FROM  `users` WHERE `email`='$email' AND `password`='$password'");
 if($result == false){
     $_SESSION['message'] = "Вы ввели неверные данные";
     header("Location: ../logIn.php");
@@ -13,7 +13,7 @@ if($result == false){
     $_SESSION['message'] = "Такого пользователя не существует";
     header("Location: ../logIn.php");
 } else{
-    $user = $result->fetch_assoc();
+    $user = $result->fetch(PDO::FETCH_ASSOC);
     if(is_array($user)){
         $_SESSION['user'] = [
             "id" => $user['id'],
