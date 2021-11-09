@@ -116,3 +116,8 @@ header div input[type="search"]{
     transform: translateY(0%);
     opacity: 1;
 }
+.addBook{
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+}
