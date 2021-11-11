@@ -1,0 +1,107 @@
+header{
+    width: 100%;
+    height: 80px;
+    background-color: rgb(49, 47, 47);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+header a{
+    text-decoration: none;
+    color: white;
+}
+header > div{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header div input[type="search"]{
+    height: 30px;
+    width: 100%;
+}
+.logo{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logo h1{
+    font-family: 'Dancing Script', cursive;
+}
+.search-svg{
+    width: 35px;
+    height: 35px;
+    transform: rotateY(180deg);
+}
+.profile{
+    display: flex;
+    color: white;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+}
+.profile img{
+    width: 50px;
+    height: 50px;
+}
+.name{
+    width: 60%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+.menu__icon{
+    position: absolute;
+    right: 17.5%;
+    top: 47.5%;
+    width: 20px;
+    height: 20px;
+    border: 10px transparent solid;
+    border-top: 10px white solid;
+    transform-origin: top;
+    transition: all 0.4s ease-in-out;
+}
+/* * Drop menu */
+/*---------------------------------------------*/
+/*---------------------------------------------*/
+.drop__menu{
+    position: absolute;
+    right: 7.5%;
+    top: 10%;
+    background-color: black;
+    width: 100px;
+    height: 100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease-in-out;
+    opacity: 0;
+    transform: translateY(-10%);
+}
+.drop__menu ul{
+    width: 100%;
+    height: 100%;
+    list-style:none;
+}
+.drop__menu ul li{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px white solid;
+}
+.drop__menu a{
+    text-decoration: none;
+    color: white;
+}
+.button__done{
+    transform: rotate(180deg) translateY(-10%);
+}
+.open{
+    transform: translateY(0%);
+    opacity: 1;
+}

@@ -21,7 +21,6 @@ if($result == false){
             "email" => $user['email'],
             "avatar" => $user['avatar']
         ];
-        $_SESSION['message'] = "Вход выполнен";
         header("Location: ../catalog.php");
     }
 }
