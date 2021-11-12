@@ -59,6 +59,7 @@
                 <li><a href="#" class="add">Добавить</a></li>
                 <li><a href="#" class="edit">Изменить</a></li>
                 <li><a href="#" class="delete">Удалить</a></li>
+                <li><a href="php/testing.php">TESING</a></li>
             </ul>
         </div>
         <div class="book-area">
@@ -101,9 +102,10 @@
                         genre_book: genreBook,
                         desc: description,
                         year_book: yearBook
-                    }
+                    },
                 }).done(function (msg){
                     alert("Data saved " + msg)
+
                 })
             })
         })
