@@ -90,6 +90,9 @@ if(!empty($_SESSION['user'])){
         <?php
 
             for ($index = 0; $index < count($_SESSION['books']);$index++){
+                $url = 'assets/pages/aboutBook.php?name-book='.$_SESSION['books'][$index]['title_book']
+                        .'&genre-book=' . $_SESSION['books'][$index]['genre_book']
+                        .'&year-book=' . $_SESSION['books'][$index]['year_book'];
                 $book = '
                 <div class="books book__1">
                     <div class="book__img">
@@ -99,7 +102,7 @@ if(!empty($_SESSION['user'])){
                         <h1 class="book__title">' . $_SESSION['books'][$index]['title_book'] . '</h1>
                         <p class="genre__book">' . $_SESSION['books'][$index]['genre_book'] . '</p>
                         <sub class="year__book">' . $_SESSION['books'][$index]['year_book'] . '</sub>
-                        <a href="assets/pages/aboutBook.php" class="link__description">Подробнее</a>
+                        <a href="' . $url .'" class="link__description">Подробнее</a>
                     </div>
                 </div>';
                 echo $book;
