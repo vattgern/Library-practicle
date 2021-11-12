@@ -5,6 +5,13 @@ if(is_array(checkBooks($database))){
     $_SESSION['books'] = checkBooks($database);
 }
 ?>
+<!--TODO:
+        1- Доделать карточку товара
+        2- Создать админа и пользователя
+        3- Почистить код
+        4- Поиск книг
+        5- По желанию сделать защиту запросов
+-->
 <!DOCTYPE html>
 <html lang="ru">
 <head>

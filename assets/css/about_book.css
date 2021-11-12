@@ -11,3 +11,37 @@ body{
     width: 100%;
     height: 100%;
 }
+section{
+    width: 100%;
+    height: 550px;
+    background-color: #555555;
+    display: flex;
+    flex-direction: row;
+}
+aside{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+aside img{
+    width: 80%;
+    height: 95%;
+}
+article{
+    height: 100%;
+    width: 70%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+article div{
+    width: 95%;
+    text-align: left;
+    margin-left: 5%;
+    margin-top: 10%;
+}

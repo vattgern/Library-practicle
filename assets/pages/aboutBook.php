@@ -1,11 +1,6 @@
 <?php
 session_start();
 ?>
-<pre>
-    <?php
-        print_r($_REQUEST);
-    ?>
-</pre>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +11,7 @@ session_start();
     <title><?= $_REQUEST['name-book'] ?></title>
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/about_book.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header_without_user.css">
     <link rel="stylesheet" href="../css/footer.css">
     <?php if(!empty($_SESSION['user'])){
         echo '<link rel="stylesheet" href="../css/header.css">';
@@ -75,6 +70,36 @@ if(!empty($_SESSION['user'])){
     </div>';
 }
 ?>
+<section>
+    <aside>
+        <img src="" alt="">
+    </aside>
+    <article>
+        <div class="book__title">Название произведения:  <?= $_REQUEST['name-book'] ?></div>
+        <div class="genre__book">Жанр произведения:  <?= $_REQUEST['genre-book'] ?></div>
+        <div class="year__book">Год издания:  <?= $_REQUEST['year-book'] ?></div>
+        <div class="authors__book">Автор:  </div>
+    </article>
+</section>
+<div class="description">Описание<?= $_REQUEST['name-book'] ?></div>
+<!-- !------------------------------------------------------------------- -->
+<!-- * Подвал -->
+<footer>
+    <div class="footer__name">
+        <p>Выполнил:</p>
+        <a href="#">Лиджиев Александр</a>
+    </div>
+    <div class="footer__links">
+        <ul>
+            <li><a href="assets/pages/logIn.php">Войти</a></li>
+            <li><a href="assets/pages/registration.php">Зарегистрироваться</a></li>
+            <li><a href="#">Тех. поддержка</a></li>
+            <li><a href="#">Справка</a></li>
+            <li><a href="#">Политика конфиденциальности</a></li>
+        </ul>
+    </div>
+</footer>
+<!-- !------------------------------------------------------------------- -->
 <!-- !------------------------------------------------------------------- -->
     <?php
     if(!empty($_SESSION['user'])){
