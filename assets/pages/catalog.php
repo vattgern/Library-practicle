@@ -17,7 +17,7 @@
     <!-- * Шапка -->
     <header>
         <div class="logo">
-            <h1><a href="#">LibPath</a></h1>
+            <h1><a href="../../index.php">LibPath</a></h1>
         </div>
         <div>
             <input type="search" name="search" id="search" placeholder="Что вы ищите ... ">

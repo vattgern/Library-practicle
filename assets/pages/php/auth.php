@@ -21,6 +21,6 @@ if($result == false){
             "email" => $user['email'],
             "avatar" => $user['avatar']
         ];
-        header("Location: ../catalog.php");
+        header("Location: ../../../index.php");
     }
 }

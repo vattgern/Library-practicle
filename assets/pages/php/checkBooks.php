@@ -2,16 +2,13 @@
 require 'connect.php';
 function checkBooks($db){
     $result = $db->query("SELECT * FROM `books`");
-    $data = $result->fetch(PDO::FETCH_ASSOC);
+    $data = [];
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        array_push($data,$row);
+    }
     if(empty($data)){
         return false;
     } else{
         return $data;
     }
 }
-?>
-<pre>
-    <?php
-        print_r(checkBooks($database));
-    ?>
-</pre>
