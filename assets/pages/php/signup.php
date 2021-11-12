@@ -11,7 +11,7 @@ $password_two = $_POST["password_two"];
 if(checkPass($password,$password_two)){
     $password = md5($password);
     if(!empty($_FILES['avatar']['name'])){
-        $path = 'assets/vendor/avatars/' . time() . $_FILES['avatar']['name'];
+        $path = '' . uniqid() . $_FILES['avatar']['name'];
         move_uploaded_file($_FILES['avatar']['tmp_name'], '../../../' . $path);
     }
     $database ->query( "INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`) VALUES (NULL, '$fullName', '$email', '$password', '$path')");

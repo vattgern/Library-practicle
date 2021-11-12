@@ -4,7 +4,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-y: hidden;
+    overflow-x: hidden;
+}
+html{
+    width: 100%;
+    height: 100%;
 }
 body{
     width: 100%;
@@ -15,16 +19,16 @@ body{
 header{
     width: 100%;
     height: 80px;
-    background-color: rgb(66, 66, 66);
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    color: white;
+    color: black;
 }
 header a{
     text-decoration: none;
-    color: white;
+    color: black;
 }
 header nav{
     display: flex;
@@ -50,7 +54,7 @@ header nav ul li:before{
     left: 0%;
     width: 0%;
     height: 2px;
-    background-color: white;
+    background-color: black;
     transition: all 0.4s ease-in-out;
 }
 header nav ul li:hover::before{
@@ -71,9 +75,17 @@ header nav ul li:hover::before{
 /* ! ------------------------------- */
 /* ! ------------------------------- */
 /* * Промо */
-.promotion{
-    width: 100%;
+.promotion__area{
+    width: 95%;
     height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.promotion{
+    margin-left: 5%;
+    width: 100%;
+    height: 100%;
     background-image: url("../images/alfons-morales-YLSwjSy7stw-unsplash.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -82,14 +94,142 @@ header nav ul li:hover::before{
     display: flex;
     justify-content: center;
     align-items: center;
-    filter: opacity(90%);
 }
-.promotion__title{
+.promotion h1{
     font-family: 'Alexander';
-    font-size: 2rem;
+    font-size: 3.5rem;
     text-align: center;
 }
-.promotion__title p{
+.promotion p{
     font-family: 'Dancing Script', cursive;
+}
+/* ! ------------------------------- */
+/* ! ------------------------------- */
+/* * Область для книг */
+.book__area{
+    margin-top: 10%;
+    width: 95%;
+    height: 900px;
+    background-color: white;
+}
+.books__title{
+    width: 100%;
+    height: 7.5%;
+    text-align: center;
+    font-family: 'Alexander';
+    font-size: 2rem;
+    overflow: hidden;
+}
+.book__list{
+    margin-left: 5%;
+    width: 100%;
+    height: 92.5%;
+    background-color: rgb(73, 73, 243);
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,1fr);
+    gap: 2.5% 1%;
+}
+.books{
+    grid-column: 0/1;
+    grid-row: 0/1;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+.book__img{
+    height: 70%;
+    overflow: hidden;
+}
+.book__img img{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.book__info{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.book__info > *{
+    margin-left: 2.5%;
+}
+.book__title{
+    font-family: 'Montserrat', sans-serif;
+}
+.genre__book{
+    font-family: 'Montserrat', sans-serif;
+}
+.year__book{
+    margin-top: 2.5%;
+    font-family: 'Montserrat', sans-serif;
+}
+.link__description{
+    border: 2px blue solid;
+    padding: 2.5% 5%;
+    width: 40%;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.4s ease-in-out;
+}
+.link__description:hover{
+    background-color: blue;
+}
+/* ! ------------------------------- */
+/* ! ------------------------------- */
+/* * Типо реклама */
+.add{
+    width: 100%;
+    height: 700px;
+    margin-top: 15%;
+}
+.add__title{
+    width: 90%;
+    padding-top: 5%;
+    margin-left: 5%;
+    height: 100%;
+    background-color: whitesmoke;
+    text-align: center;
+    font-family: 'Alexander';
+}
+.add_button{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add_button a{
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    padding: 2.5% 5%;
+    border: 2px black solid;
+    animation: bordercolor 6s infinite;
+    transition: all 0.4s ease-in-out;
+}
+@keyframes bordercolor {
+    0%{
+        border-color: black;
+        color: black;
+    }
+    25%{
+        border-color: blue;
+        color: blue;
+    }
+    50%{
+        border-color: red;
+        color: red;
+    }
+    75%{
+        border-color:lawngreen;
+        color: lawngreen;
+    }
+    100%{
+        border-color: black;
+        color: black;
+    }
 }
 /* ! ------------------------------- */

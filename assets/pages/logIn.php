@@ -13,6 +13,7 @@ if(!empty($_SESSION['user'])){
     <title>Вход</title>
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/logIn.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
     <!-- !------------------------------------------------------------------- -->
@@ -23,7 +24,7 @@ if(!empty($_SESSION['user'])){
         </div>
         <nav>
             <ul>
-                <li><a href="../../index.html">Главная</a></li>
+                <li><a href="../../index.php">Главная</a></li>
                 <li class="middle"><a href="#">Каталог</a></li>
                 <li><a href="#">Вход</a></li>
             </ul>
@@ -57,6 +58,24 @@ if(!empty($_SESSION['user'])){
             ?>
         </form>
     </div>
+    <!-- !------------------------------------------------------------------- -->
+    <!-- !------------------------------------------------------------------- -->
+    <!-- * Подвал  -->
+    <footer>
+        <div class="footer__name">
+            <p>Выполнил:</p>
+            <a href="#">Лиджиев Александр</a>
+        </div>
+        <div class="footer__links">
+            <ul>
+                <li><a href="assets/pages/logIn.php">Войти</a></li>
+                <li><a href="assets/pages/registration.php">Зарегистрироваться</a></li>
+                <li><a href="#">Тех. поддержка</a></li>
+                <li><a href="#">Справка</a></li>
+                <li><a href="#">Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+    </footer>
     <!-- !------------------------------------------------------------------- -->
 </body>
 </html>

@@ -57,7 +57,6 @@
         <div class="option-books">
             <ul>
                 <li><a href="#" class="add">Добавить</a></li>
-                <li><a href="#" class="edit">Изменить</a></li>
                 <li><a href="#" class="delete">Удалить</a></li>
                 <li><a href="php/testing.php">TESING</a></li>
             </ul>
@@ -72,11 +71,12 @@
         </div>
         <div class="popOnAdd">
             <h1>Добавление книги</h1>
-            <form action="" id="form-book">
+            <form action="" id="form-book" enctype="multipart/form-data">
                 <input type="text" name="name-book" id="name-book" placeholder="Введите название книги">
                 <input type="text" name="name-author" id="name-author" placeholder="Введите ФИО Автора">
                 <input type="text" name="genre-book" id="genre-book" placeholder="Введите жанр книги">
                 <input type="text" name="year-book" id="year-book" placeholder="Введите год выпуска">
+                <input type="file" name="img-book" id="img-book">
                 <textarea name="description-book" id="description-book" placeholder="Описание"></textarea>
                 <button type="submit" id="btnFormAdd">
                     Добавить
@@ -93,6 +93,8 @@
                 let genreBook = $('#genre-book').val()
                 let yearBook = $('#year-book').val()
                 let description = $('#description-book').val()
+                let imgBook = $('#img-book').val()
+                let path = "../../../assets/vendor/avatars/"+Math.random()*1000000+imgBook
                 $.ajax({
                     method: 'POST',
                     url: 'php/add_book.php',
@@ -101,7 +103,9 @@
                         name_author: nameAuthor,
                         genre_book: genreBook,
                         desc: description,
-                        year_book: yearBook
+                        year_book: yearBook,
+                        img_book: imgBook,
+                        path: path
                     },
                 }).done(function (msg){
                     alert("Data saved " + msg)
