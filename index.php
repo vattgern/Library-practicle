@@ -5,10 +5,10 @@ if(is_array(checkBooks($database))){
     $_SESSION['data'] = checkBooks($database);
 }
 ?>
-<pre><?=
-        print_r($_SESSION['data']);
-?>
-</pre>
+<!--<pre>//=
+//        print_r($_SESSION['data']);
+//
+</pre>-->
 <!--TODO:
         1- Доделать карточку товара*
         2- Создать админа и пользователя*
@@ -113,9 +113,13 @@ if(!empty($_SESSION['user'])){
                     }
                 }
                 $fullAuthors = '';
-                for($item=0;$item<count($authors);$item++){
-                    if($authors[$index]['id_author'] == $ships[$item]['id_a']){
-                        $fullAuthors .= $authors[$item]['name_author'] .',';
+                for($item =0;$item< count($ships);$item++){
+                    if($books[$index]['id_book'] == $ships[$item]['id_b']){
+                        for($i=0;$i<count($authors);$i++){
+                            if($authors[$i]['id_author'] == $ships[$item]['id_a']){
+                                $fullAuthors .= $authors[$item]['name_author'] .',';
+                            }
+                        }
                     }
                 }
 //                for($item=0;$item < count($ships); $item++){

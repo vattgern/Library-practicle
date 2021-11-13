@@ -1,8 +1,5 @@
 <?php
 session_start();
-if($_SESSION['user']['status'] != 10){
-    header("Location: ../../index.php");
-}
 require 'connect.php';
 function checkBooks($db){
     $result = $db->query("SELECT * FROM `books`");
