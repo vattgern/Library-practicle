@@ -2,14 +2,18 @@
 session_start();
 require_once 'assets/pages/php/checkBooks.php';
 if(is_array(checkBooks($database))){
-    $_SESSION['books'] = checkBooks($database);
+    $_SESSION['data'] = checkBooks($database);
 }
 ?>
+<pre><?=
+        print_r($_SESSION['data']);
+?>
+</pre>
 <!--TODO:
-        1- Доделать карточку товара
-        2- Создать админа и пользователя
+        1- Доделать карточку товара*
+        2- Создать админа и пользователя*
         3- Почистить код
-        4- Поиск книг
+        4- Поиск книг*
         5- По желанию сделать защиту запросов
 -->
 <!DOCTYPE html>
@@ -25,6 +29,8 @@ if(is_array(checkBooks($database))){
     <?php
     if(!empty($_SESSION['user'])){
         echo '<link rel="stylesheet" href="assets/css/header.css">';
+    } else{
+        echo '<link rel="stylesheet" href="assets/css/header_without_user.css">';
     }
     ?>
 </head>
@@ -54,14 +60,14 @@ if(is_array(checkBooks($database))){
                                 <h1><a href="#">LibPath</a></h1>
                             </div>
                             <div>
-                                <input type="search" name="search" id="search" placeholder="Что вы ищите ... ">
+                                <input type="search" name="search" onkeyup="searchBooks()" id="search" placeholder="Что вы ищите ... ">
                                 <label for="search">
                                     <img class="search-svg" src="assets/images/search-svg.svg" alt="">
                                 </label>
                             </div>
                             <div class="profile">
                                 <div class="name">' . $head_user_name . '</div>
-                                <a href="assets/pages/catalog.php"><img src="' . $head_user_avatar . '" alt=""></a>
+                                <a href="assets/pages/user.php"><img src="' . $head_user_avatar . '" alt=""></a>
                                 <div class="menu__icon"></div>
                             </div>
                         </header>';
@@ -73,7 +79,7 @@ if(is_array(checkBooks($database))){
 if(!empty($_SESSION['user'])){
     echo '    <div class="drop__menu">
         <ul>
-            <li><a href="assets/pages/profile.php">Настройки</a></li>
+            <li><a href="assets/pages/setting.php">Настройки</a></li>
             <li><a href="assets/pages/php/logout.php">Выход</a></li>
         </ul>
     </div>';
@@ -95,20 +101,45 @@ if(!empty($_SESSION['user'])){
     </div>
     <div class="book__list">
         <?php
+            $books = $_SESSION['data']['books'];
+            $authors = $_SESSION['data']['authors'];
+            $ships = $_SESSION['data']['ships'];
+            for ($index = 0; $index < count($books);$index++){
+                $id_book = $books[$index]["id_book"];
+                $id_author = [];
+                for($i=0;$i<count($ships);$i++){
+                    if($ships[$i]['id_b'] == $id_book){
+                        array_push($id_author,$ships[$i]['id_a']);
+                    }
+                }
+                $fullAuthors = '';
+                for($item=0;$item<count($authors);$item++){
+                    if($authors[$index]['id_author'] == $ships[$item]['id_a']){
+                        $fullAuthors .= $authors[$item]['name_author'] .',';
+                    }
+                }
+//                for($item=0;$item < count($ships); $item++){
+//                    $id_a = $ships[$item]['id_a'];
+//                    if($id_a == $authors[$item]['id_author']){
+//                        $fullAuthors .= $authors[$item]['name_author'] .',';
+//                    }
+//                }
 
-            for ($index = 0; $index < count($_SESSION['books']);$index++){
-                $url = 'assets/pages/aboutBook.php?name-book='.$_SESSION['books'][$index]['title_book']
-                        .'&genre-book=' . $_SESSION['books'][$index]['genre_book']
-                        .'&year-book=' . $_SESSION['books'][$index]['year_book'];
+                $fullAuthors = str_replace(',','',$fullAuthors);
+                $url = 'assets/pages/aboutBook.php?name-book='.$books[$index]['title_book']
+                        .'&genre-book=' . $books[$index]['genre_book']
+                        .'&year-book=' . $books[$index]['year_book']
+                        .'&name-authors=' . $fullAuthors;
                 $book = '
                 <div class="books book__1">
                     <div class="book__img">
                         <img src="" alt="">
                     </div>
                     <div class="book__info">
-                        <h1 class="book__title">' . $_SESSION['books'][$index]['title_book'] . '</h1>
-                        <p class="genre__book">' . $_SESSION['books'][$index]['genre_book'] . '</p>
-                        <sub class="year__book">' . $_SESSION['books'][$index]['year_book'] . '</sub>
+                        <h1 class="book__title">' . $books[$index]['title_book'] . '</h1>
+                        <p class="authors">' . $fullAuthors . '</p>
+                        <p class="genre__book">'  . $books[$index]['genre_book'] . '</p>
+                        <sub class="year__book">' . $books[$index]['year_book'] . '</sub>
                         <a href="' . $url .'" class="link__description">Подробнее</a>
                     </div>
                 </div>';
@@ -161,7 +192,7 @@ if(!empty($_SESSION['user'])){
     </div>
 </footer>
 <!-- !------------------------------------------------------------------- -->
-<script src="assets/js/main.js"></script>
+<script src="assets/js/search_app.js"></script>
 <?php
 if(!empty($_SESSION['user'])){
     echo '<script src="assets/js/drop_menu-catalog.js"></script>';

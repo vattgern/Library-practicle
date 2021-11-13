@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 header{
     width: 100%;
     height: 80px;
@@ -5,6 +7,9 @@ header{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 header a{
     text-decoration: none;
@@ -31,7 +36,7 @@ header div input[type="search"]{
     font-family: 'Dancing Script', cursive;
 }
 .search-svg{
-    width: 35px;
+    width: 30px;
     height: 35px;
     transform: rotateY(180deg);
 }
@@ -56,8 +61,8 @@ header div input[type="search"]{
     position: absolute;
     right: 17.5%;
     top: 47.5%;
-    width: 20px;
-    height: 20px;
+    width: 2.5px;
+    height: 2.5px;
     border: 10px transparent solid;
     border-top: 10px white solid;
     transform-origin: top;
@@ -70,7 +75,7 @@ header div input[type="search"]{
     position: absolute;
     right: 7.5%;
     top: 10%;
-    background-color: black;
+    background-color: white;
     width: 100px;
     height: 100px;
     display:flex;
@@ -79,6 +84,11 @@ header div input[type="search"]{
     transition: all 0.4s ease-in-out;
     opacity: 0;
     transform: translateY(-10%);
+    overflow: hidden;
+    color: black;
+}
+.drop__menu *{
+    overflow: hidden;
 }
 .drop__menu ul{
     width: 100%;
@@ -92,11 +102,26 @@ header div input[type="search"]{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px white solid;
+    border: 2px white black;
 }
 .drop__menu a{
+    font-family: 'Montserrat', sans-serif;
     text-decoration: none;
-    color: white;
+    color: black;
+    position: relative;
+}
+.drop__menu a::before{
+    content: '';
+    width: 0;
+    height: 1%;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.4s ease-in;
+}
+.drop__menu a:hover::before{
+    width: 100%;
 }
 .button__done{
     transform: rotate(180deg) translateY(-10%);

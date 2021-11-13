@@ -1,5 +1,8 @@
 <?php
 session_start();
+if($_SESSION['user']['status'] != 10){
+    header("Location: ../../index.php");
+}
 try {
     $database = new PDO('mysql:host=localhost;dbname=library-practicle','root','');
 } catch (PDOException $e) {
@@ -49,20 +52,12 @@ function checkCountAuthors($arr, $db){
         return $result;
     }
 }
-$name_book = $_POST['name_book'];
-$name_author = $_POST['name_author'];
-$genre_book = $_POST['genre_book'];
-$desc = $_POST['desc'];
-$year_book = $_POST['year_book'];
-
 $data = [
     "name_book" => $_POST['name_book'],
     "genre_book" =>$_POST['genre_book'],
     "desc" =>$_POST['desc'],
     "year_book" =>$_POST['year_book'],
     "name_author" => $_POST['name_author'],
-    "img_book" => $_POST['img_book'],
-    "path" => $_POST['path']
 ];
 if(count(checkCountAuthors($data,$database)) > 0){
     $arrAuthors = checkCountAuthors($data,$database);
@@ -73,10 +68,9 @@ if(count(checkCountAuthors($data,$database)) > 0){
             $idAuthor_fk = $database->query("SELECT `id_author` FROM `authors` WHERE `name_author` LIKE '{$arrAuthors[$index]}'");
             $idAuthor = $idAuthor_fk->fetch(PDO::FETCH_ASSOC);
             $idAuthor['id_author'] = (int) $idAuthor['id_author'];
-            if(!checkBook($name_book,$genre_book,$year_book,$database)){
-                move_uploaded_file($data['img_book'], '../../../' . $$data['path']);
+            if(!checkBook($data['name_book'],$data['genre_book'],$data['year_book'],$database)){
                 // ВСТАВЛЯЕМ КНИГУ В БАЗУ ДАННЫХ
-                $database->query("INSERT INTO `books` (`id_book`, `title_book`, `genre_book`, `desc_book`, `img_book`, `year_book`) VALUES (NULL, '{$data['name_book']}', '{$data['genre_book']}', '{$data['desc']}', '$path' , '{$data['year_book']}')");
+                $database->query("INSERT INTO `books` (`id_book`, `title_book`, `genre_book`, `desc_book`, `img_book`, `year_book`) VALUES (NULL, '{$data['name_book']}', '{$data['genre_book']}', '{$data['desc']}', '' , '{$data['year_book']}')");
             }
             // СРАЗУ ПОЛУЧАЕМ ID КНИГИ
             $idBook_fk = $database->query("SELECT `id_book` FROM `books` WHERE `title_book` LIKE '{$data['name_book']}'");

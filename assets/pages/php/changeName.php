@@ -10,4 +10,4 @@ if($new_first_name == '' || $new_last_name == ''){
     $database->query("UPDATE `users` SET `name`='$full_name' WHERE id = '{$_SESSION['user']['id']}'");
     $_SESSION['user']['name'] = $full_name;
 }
-header("Location: ../profile.php");
+header("Location: ../setting.php");

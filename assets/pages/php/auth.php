@@ -19,7 +19,8 @@ if($result == false){
             "id" => $user['id'],
             "name" => $user['name'],
             "email" => $user['email'],
-            "avatar" => $user['avatar']
+            "avatar" => $user['avatar'],
+            "status" => $user['status']
         ];
         header("Location: ../../../index.php");
     }

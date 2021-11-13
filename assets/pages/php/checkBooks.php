@@ -1,14 +1,33 @@
 <?php
+session_start();
+if($_SESSION['user']['status'] != 10){
+    header("Location: ../../index.php");
+}
 require 'connect.php';
 function checkBooks($db){
     $result = $db->query("SELECT * FROM `books`");
-    $data = [];
+    $result2 = $db->query("SELECT * FROM `authors`");
+    $merge = $db->query("SELECT * FROM `usersbooks`");
+    $books = [];
+    $authors = [];
+    $ships = [];
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
-        array_push($data,$row);
+        array_push($books,$row);
     }
-    if(empty($data)){
+    while($column = $result2->fetch(PDO::FETCH_ASSOC)) {
+        array_push($authors, $column);
+    }
+    while($line = $merge->fetch(PDO::FETCH_ASSOC)){
+        array_push($ships,$line);
+    }
+    $our = [
+        "books" => $books,
+        "authors" => $authors,
+        "ships" => $ships
+    ];
+    if(empty($our)){
         return false;
     } else{
-        return $data;
+        return $our;
     }
 }

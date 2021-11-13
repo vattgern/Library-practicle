@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!empty($_SESSION['user'])){
-    header("Location: catalog.php");
+    header("Location: user.php");
 }
 ?>
 <!DOCTYPE html>

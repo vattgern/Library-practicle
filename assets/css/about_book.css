@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    overflow-x: hideden;
+    overflow-x: hidden;
 }
 html{
     width: 100%;
@@ -12,6 +12,7 @@ body{
     height: 100%;
 }
 section{
+    margin-top: 5%;
     width: 100%;
     height: 550px;
     background-color: #555555;
@@ -43,5 +44,16 @@ article div{
     width: 95%;
     text-align: left;
     margin-left: 5%;
-    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.description{
+    width: 100%;
+    height: 300px;
+    padding: 2% 5%;
+}
+.description h1{
+    font-family: 'Montserrat', sans-serif;
+}
+.description p{
+    font-family: 'Montserrat', sans-serif;
 }

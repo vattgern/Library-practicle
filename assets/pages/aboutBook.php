@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_REQUEST['name-authors'] = str_replace(',','',$_REQUEST['name-authors']);
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,10 +12,11 @@ session_start();
     <title><?= $_REQUEST['name-book'] ?></title>
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/about_book.css">
-    <link rel="stylesheet" href="../css/header_without_user.css">
     <link rel="stylesheet" href="../css/footer.css">
     <?php if(!empty($_SESSION['user'])){
         echo '<link rel="stylesheet" href="../css/header.css">';
+    } else{
+        echo '<link rel="stylesheet" href="../css/header_without_user.css">';
     }
     ?>
 </head>
@@ -24,7 +26,7 @@ session_start();
 <?php
 $header_without_user = '<header>
                                 <div class="logo">
-                                    <h1><a href="#">LibPath</a></h1>
+                                    <h1><a href="../../index.php">LibPath</a></h1>
                                 </div>
                                 <nav>
                                     <ul>
@@ -41,7 +43,7 @@ if(empty($_SESSION['user'])){
     $head_user_avatar = "/" . "{$_SESSION['user']['avatar']}";
     $header_with_user = '<header>
                             <div class="logo">
-                                <h1><a href="#">LibPath</a></h1>
+                                <h1><a href="../../index.php">LibPath</a></h1>
                             </div>
                             <div>
                                 <input type="search" name="search" id="search" placeholder="Что вы ищите ... ">
@@ -51,7 +53,7 @@ if(empty($_SESSION['user'])){
                             </div>
                             <div class="profile">
                                 <div class="name">' . $head_user_name . '</div>
-                                <a href="catalog.php"><img src="' . $head_user_avatar . '" alt=""></a>
+                                <a href="user.php"><img src="' . $head_user_avatar . '" alt=""></a>
                                 <div class="menu__icon"></div>
                             </div>
                         </header>';
@@ -64,7 +66,7 @@ if(empty($_SESSION['user'])){
 if(!empty($_SESSION['user'])){
     echo '    <div class="drop__menu">
         <ul>
-            <li><a href="profile.php">Настройки</a></li>
+            <li><a href="setting.php">Настройки</a></li>
             <li><a href="php/logout.php">Выход</a></li>
         </ul>
     </div>';
@@ -75,13 +77,19 @@ if(!empty($_SESSION['user'])){
         <img src="" alt="">
     </aside>
     <article>
-        <div class="book__title">Название произведения:  <?= $_REQUEST['name-book'] ?></div>
-        <div class="genre__book">Жанр произведения:  <?= $_REQUEST['genre-book'] ?></div>
-        <div class="year__book">Год издания:  <?= $_REQUEST['year-book'] ?></div>
-        <div class="authors__book">Автор:  </div>
+        <div class="book__title"><strong>Название произведения:</strong>  <?= $_REQUEST['name-book'] ?></div>
+        <div class="genre__book"><strong>Жанр произведения:</strong>  <?= $_REQUEST['genre-book'] ?></div>
+        <div class="year__book"><strong>Год издания:</strong>  <?= $_REQUEST['year-book'] ?></div>
+        <div class="authors__book"><strong>Автор:</strong>  <?=$_REQUEST['name-authors']?></div>
     </article>
 </section>
-<div class="description">Описание<?= $_REQUEST['name-book'] ?></div>
+<div class="description">
+    <h1>Описание</h1>
+    <p>
+        <?= $_REQUEST['name-book'] ?>
+    </p>
+
+</div>
 <!-- !------------------------------------------------------------------- -->
 <!-- * Подвал -->
 <footer>

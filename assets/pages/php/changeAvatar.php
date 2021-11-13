@@ -11,4 +11,4 @@ if(empty($img)){
     $database->query("UPDATE `users` SET `avatar`='$path' WHERE id = '{$_SESSION['user']['id']}'");
     $_SESSION['user']['avatar'] = $path;
 }
-header("Location: ../profile.php");
+header("Location: ../setting.php");

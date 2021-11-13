@@ -41,7 +41,7 @@ if(empty($_SESSION['user'])){
             <ul class="setting__menu">
                 <li>Изменить аватар</li>
                 <li>Изменить имя</li>
-                <li><a href="catalog.php">Выйти из настроек</a></li>
+                <li><a href="user.php">Выйти из настроек</a></li>
                 <li><a href="php/logout.php">Выйти из аккаунта</a></li>
             </ul>
         </aside>

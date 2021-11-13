@@ -80,7 +80,7 @@ body{
     flex-direction: column;
 }
 .book__img{
-    height: 70%;
+    height: 60%;
     overflow: hidden;
 }
 .book__img img{
@@ -89,7 +89,7 @@ body{
     overflow: hidden;
 }
 .book__info{
-    height: 30%;
+    height: 40%;
     display: flex;
     flex-direction: column;
 }
@@ -97,6 +97,9 @@ body{
     margin-left: 2.5%;
 }
 .book__title{
+    font-family: 'Montserrat', sans-serif;
+}
+.authors{
     font-family: 'Montserrat', sans-serif;
 }
 .genre__book{
@@ -107,6 +110,7 @@ body{
     font-family: 'Montserrat', sans-serif;
 }
 .link__description{
+    margin-top: 5%;
     border: 2px blue solid;
     padding: 2.5% 5%;
     width: 40%;
