@@ -128,7 +128,6 @@ if(!empty($_SESSION['user'])){
 //                        $fullAuthors .= $authors[$item]['name_author'] .',';
 //                    }
 //                }
-
                 $fullAuthors = str_replace(',','',$fullAuthors);
                 $url = 'assets/pages/aboutBook.php?name-book='.$books[$index]['title_book']
                         .'&genre-book=' . $books[$index]['genre_book']
