@@ -108,7 +108,7 @@ if($_SESSION['user']['status'] != 10){
         <form action="" id="form-book">
             <input type="text" name="name-book" id="name-booker" placeholder="Введите название книги">
             <button type="submit" id="btnFormDelete">
-                Добавить
+                Удалить
             </button>
         </form>
     </div>
@@ -134,18 +134,15 @@ if($_SESSION['user']['status'] != 10){
             let genreBook = $('#genre-book').val()
             let yearBook = $('#year-book').val()
             let description = $('#description-book').val()
-            let imgBook = document.querySelector("#img-book").files[0]
-            var formData = new FormData();
-            formData.append('file', $("#img-book").files[0]);
             $.ajax({
                 method: 'POST',
                 url: 'php/add_book.php',
                 data: {
-                    "name_book": nameBook,
-                    "name_author": nameAuthor,
-                    "genre_book": genreBook,
-                    "year_book": yearBook,
-                    "desc": description,
+                    name_book: nameBook,
+                    name_author: nameAuthor,
+                    genre_book: genreBook,
+                    year_book: yearBook,
+                    desc: description,
                 },
             }).done(function (msg){
                 alert("Data saved " + msg)
