@@ -86,7 +86,7 @@ if(!empty($_SESSION['user'])){
 <div class="description">
     <h1>Описание</h1>
     <p>
-        <?= $_REQUEST['name-book'] ?>
+        <?= $_REQUEST['desc'] ?>
     </p>
 
 </div>

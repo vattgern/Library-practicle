@@ -104,7 +104,7 @@ if(!empty($_SESSION['user'])){
             $books = $_SESSION['data']['books'];
             $authors = $_SESSION['data']['authors'];
             $ships = $_SESSION['data']['ships'];
-            for ($index = 0; $index < count($books);$index++){
+            for ($index = 0; $index < count($books) ;$index++){
                 $id_book = $books[$index]["id_book"];
                 $id_author = [];
                 for($i=0;$i<count($ships);$i++){
@@ -117,7 +117,7 @@ if(!empty($_SESSION['user'])){
                     if($books[$index]['id_book'] == $ships[$item]['id_b']){
                         for($i=0;$i<count($authors);$i++){
                             if($authors[$i]['id_author'] == $ships[$item]['id_a']){
-                                $fullAuthors .= $authors[$item]['name_author'] .',';
+                                $fullAuthors .= $authors[$i]['name_author'] .',';
                             }
                         }
                     }
@@ -132,7 +132,8 @@ if(!empty($_SESSION['user'])){
                 $url = 'assets/pages/aboutBook.php?name-book='.$books[$index]['title_book']
                         .'&genre-book=' . $books[$index]['genre_book']
                         .'&year-book=' . $books[$index]['year_book']
-                        .'&name-authors=' . $fullAuthors;
+                        .'&name-authors=' . $fullAuthors
+                        .'&desc=' . $books[$index]['desc_book'];
                 $book = '
                 <div class="books book__1">
                     <div class="book__img">
@@ -146,7 +147,9 @@ if(!empty($_SESSION['user'])){
                         <a href="' . $url .'" class="link__description">Подробнее</a>
                     </div>
                 </div>';
-                echo $book;
+                if(!$fullAuthors == ''){
+                    echo $book;
+                }
             }
         ?>
 <!--        <div class="books book__1">-->

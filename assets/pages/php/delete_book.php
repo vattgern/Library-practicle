@@ -25,6 +25,5 @@ if(is_array($result)){
         $database->query("DELETE FROM `usersbooks` WHERE `id_a` = '{$arr2['id_a']}'");
         $database->query("DELETE FROM `usersbooks` WHERE `id_b` = '{$arr1['id_b']}'");
         $database->query("DELETE FROM `books` WHERE `id_book` = '{$arr1['id_b']}'");
-        $database->query("DELETE FROM `authors` WHERE `id_author` = '{$arr2['id_a']}'");
     }
 };
