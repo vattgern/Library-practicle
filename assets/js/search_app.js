@@ -1,7 +1,6 @@
 function searchBooks() {
     let input = document.querySelector("#search");
     let filter = input.value.toUpperCase();
-    let bookArea = document.querySelector(".book__list");
     let books = document.querySelectorAll(".books")
     let authors = document.querySelectorAll(".authors");
     for (let index = 0; index < books.length; index++){

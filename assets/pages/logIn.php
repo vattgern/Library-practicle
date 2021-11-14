@@ -35,7 +35,7 @@ if(!empty($_SESSION['user'])){
     <!-- * Форма Авторизации -->
     <div class="auth">
         <h1>Авторизуйтесь</h1>
-        <form action="php/auth.php" method="post">
+        <form action="../php/auth.php" method="post">
             <label for="email">
                 Введите почту
                 <input type="email" name="email" id="email">
@@ -68,8 +68,8 @@ if(!empty($_SESSION['user'])){
         </div>
         <div class="footer__links">
             <ul>
-                <li><a href="assets/pages/logIn.php">Войти</a></li>
-                <li><a href="assets/pages/registration.php">Зарегистрироваться</a></li>
+                <li><a href="../pages/logIn.php">Войти</a></li>
+                <li><a href="../pages/registration.php">Зарегистрироваться</a></li>
                 <li><a href="#">Тех. поддержка</a></li>
                 <li><a href="#">Справка</a></li>
                 <li><a href="#">Политика конфиденциальности</a></li>

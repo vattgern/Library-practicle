@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'assets/pages/php/checkBooks.php';
+require_once 'assets/php/checkBooks.php';
 if(is_array(checkBooks($database))){
     $_SESSION['data'] = checkBooks($database);
 }
@@ -12,7 +12,7 @@ if(is_array(checkBooks($database))){
 <!--TODO:
         1- Доделать карточку товара*
         2- Создать админа и пользователя*
-        3- Почистить код
+        3- Почистить код*
         4- Поиск книг*
         5- По желанию сделать защиту запросов
 -->
@@ -80,7 +80,7 @@ if(!empty($_SESSION['user'])){
     echo '    <div class="drop__menu">
         <ul>
             <li><a href="assets/pages/setting.php">Настройки</a></li>
-            <li><a href="assets/pages/php/logout.php">Выход</a></li>
+            <li><a href="assets/php/logout.php">Выход</a></li>
         </ul>
     </div>';
 }

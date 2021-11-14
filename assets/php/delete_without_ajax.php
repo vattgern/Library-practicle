@@ -3,12 +3,7 @@ session_start();
 if($_SESSION['user']['status'] != 10){
     header("Location: ../../index.php");
 }
-try {
-    $database = new PDO('mysql:host=localhost;dbname=library-practicle','root','');
-} catch (PDOException $e){
-    echo "Ошибка подключения базы данных " . $e;
-    die();
-}
+require 'connect.php';
 function check($row, $a){
     $row[$a] ??= $a;
     return $row[$a];
@@ -26,11 +21,6 @@ if(is_array($result)){
         $database->query("DELETE FROM `usersbooks` WHERE `id_b` = '{$arr1['id_b']}'");
         $database->query("DELETE FROM `books` WHERE `id_book` = '{$arr1['id_b']}'");
         $database->query("DELETE FROM `authors` WHERE `id_author` = '{$arr2['id_a']}'");
-        header("Location: ../user.php");
+        header("Location: ../pages/user.php");
     }
 }
-// ИЩЕМ АВТОРА В СВЯЗЫВАЮЩЕЙ ТАБЛИЦЕ
-
-
-
-

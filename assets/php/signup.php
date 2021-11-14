@@ -17,8 +17,8 @@ if(checkPass($password,$password_two)){
     $status = 1;
     $database ->query( "INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`, `status`) VALUES (NULL, '$fullName', '$email', '$password', '$path', '$status')");
     $_SESSION['message'] = "Регистрация прошла успешно";
-    header("Location: ../logIn.php");
+    header("Location: ../pages/logIn.php");
 } else{
     $_SESSION['message'] = 'Пароли не совпадают';
-    header("Location: ../registration.php");
+    header("Location: ../pages/registration.php");
 }

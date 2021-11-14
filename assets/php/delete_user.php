@@ -4,4 +4,4 @@ if($_SESSION['user']['status'] != 10){
 }
 require 'connect.php';
 $database->query("DELETE FROM `users` WHERE `id` = {$_REQUEST['id']}");
-header("Location: ../user.php");
+header("Location: ../pages/user.php");

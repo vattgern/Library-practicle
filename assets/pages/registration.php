@@ -35,7 +35,7 @@ if(!empty($_SESSION['user'])){
     <!-- * Форма Регистрации -->
     <div class="auth">
         <h1>Зарегистрируйтесь</h1>
-        <form action="php/signup.php" method="post" enctype="multipart/form-data">
+        <form action="../php/signup.php" method="post" enctype="multipart/form-data">
             <label for="first_name">
                 Введите имя
                 <input type="text" name="first_name" id="first_name">
@@ -83,8 +83,8 @@ if(!empty($_SESSION['user'])){
         </div>
         <div class="footer__links">
             <ul>
-                <li><a href="assets/pages/logIn.php">Войти</a></li>
-                <li><a href="assets/pages/registration.php">Зарегистрироваться</a></li>
+                <li><a href="../pages/logIn.php">Войти</a></li>
+                <li><a href="../pages/registration.php">Зарегистрироваться</a></li>
                 <li><a href="#">Тех. поддержка</a></li>
                 <li><a href="#">Справка</a></li>
                 <li><a href="#">Политика конфиденциальности</a></li>

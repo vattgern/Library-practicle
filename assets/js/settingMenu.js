@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded",()=>{
     const settingMenu = document.querySelectorAll(".setting__menu li");
     const pages = document.querySelectorAll("article > div");
@@ -16,6 +15,4 @@ document.addEventListener("DOMContentLoaded",()=>{
         pages[0].classList.add("invisiblePage")
         pages[1].classList.remove("invisiblePage")
     })
-
-
 })

@@ -10,7 +10,7 @@ if(empty($_SESSION['user'])){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $_SESSION['user']['name']; ?></title>
+    <title><?= $_SESSION['user']['name'];?> </title>
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/profile.css">
@@ -42,7 +42,7 @@ if(empty($_SESSION['user'])){
                 <li>Изменить аватар</li>
                 <li>Изменить имя</li>
                 <li><a href="user.php">Выйти из настроек</a></li>
-                <li><a href="php/logout.php">Выйти из аккаунта</a></li>
+                <li><a href="../php/logout.php">Выйти из аккаунта</a></li>
             </ul>
         </aside>
         <article>
@@ -50,7 +50,7 @@ if(empty($_SESSION['user'])){
                 <div class="result">
                     <img src="<?= '/' . $_SESSION['user']['avatar'] ?>" alt="">
                 </div>
-                <form action="php/changeAvatar.php" method="post" enctype="multipart/form-data">
+                <form action="../php/changeAvatar.php" method="post" enctype="multipart/form-data">
                     <input type="file" name="file" id="file" class="input-file">
                     <label for="file" class="btn btn-tertiary js-labelFile">
                         <i class="icon fa fa-check"></i>
@@ -68,7 +68,7 @@ if(empty($_SESSION['user'])){
                 ?>
             </div>
             <div class="block_name">
-                <form action="php/changeName.php" method="post">
+                <form action="../php/changeName.php" method="post">
                     <label for="newFirstNameName">Изменить имя:</label>
                     <input type="text" name="newFirstName" id="newFirstName">
                     <label for="newLastName">Изменит фамилию:</label>

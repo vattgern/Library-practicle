@@ -41,7 +41,7 @@ if($_SESSION['user']['status'] != 10){
 <div class="drop__menu">
     <ul>
         <li><a href="setting.php">Настройки</a></li>
-        <li><a href="php/logout.php">Выход</a></li>
+        <li><a href="../php/logout.php">Выход</a></li>
     </ul>
 </div>
 <section class="area">
@@ -50,11 +50,10 @@ if($_SESSION['user']['status'] != 10){
             <li><a href="#" class="add">Добавить</a></li>
             <li><a href="#" class="edit">Изменить</a></li>
             <li><a href="#" class="delete">Удалить</a></li>
-            <form action="php/delete_without_ajax.php" method="post">
+            <form action="../php/delete_without_ajax.php" method="post">
                 <input type="text" name="name_book" id="" placeholder="Книгу крирорукий">
                 <input type="submit" value="Удалить без AJAX">
             </form>
-
         </ul>
     </div>
     <div class="book-area">
@@ -76,7 +75,7 @@ if($_SESSION['user']['status'] != 10){
                                 <td>" . $users[$index]['name'] . "</td>
                                 <td>" . $users[$index]["email"] . "</td>
                                 <td>" . $users[$index]['status'] . "</td>
-                                <td><a href='php/delete_user.php?id=" . $users[$index]['id'] . "'>Удалить</a></td>
+                                <td><a href='../php/delete_user.php?id=" . $users[$index]['id'] . "'>Удалить</a></td>
                             </tr>";
             $table .= $line;
         }
@@ -120,7 +119,7 @@ if($_SESSION['user']['status'] != 10){
             let nameBook = $('#name-booker').val()
             $.ajax({
                 method: 'POST',
-                url: 'php/delete_book.php',
+                url: '../php/delete_book.php',
                 data: {
                     name_book: nameBook,
                 },
@@ -136,7 +135,7 @@ if($_SESSION['user']['status'] != 10){
             let description = $('#description-book').val()
             $.ajax({
                 method: 'POST',
-                url: 'php/add_book.php',
+                url: '../php/add_book.php',
                 data: {
                     name_book: nameBook,
                     name_author: nameAuthor,

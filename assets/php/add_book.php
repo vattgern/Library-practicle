@@ -3,12 +3,7 @@ session_start();
 if($_SESSION['user']['status'] != 10){
     header("Location: ../../index.php");
 }
-try {
-    $database = new PDO('mysql:host=localhost;dbname=library-practicle','root','');
-} catch (PDOException $e) {
-    echo "Ошибка подключения базы данных " . $e;
-    die();
-}
+require 'connect.php';
 // ПРОВЕРКА НАЛИЧЯ АВТОРА В БАЗЕ ДАННЫХ
 function checkAuthor($name, $db){
     $result = $db->query("SELECT * FROM `authors` WHERE `name_author` LIKE '$name'");
