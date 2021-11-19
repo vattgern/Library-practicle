@@ -17,8 +17,8 @@ if($_SESSION['user']['status'] != 10){
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
-<!-- ! ------------------------------------------------- -->
-<!-- * Шапка -->
+<!----------------------------------------------------------------------------------------->
+<!-- ШАПКА -->
 <header>
     <div class="logo">
         <h1><a href="../../index.php">LibPath</a></h1>
@@ -35,32 +35,31 @@ if($_SESSION['user']['status'] != 10){
         <div class="menu__icon"></div>
     </div>
 </header>
-<!-- ! ------------------------------------------------- -->
-<!-- ! ------------------------------------------------- -->
-<!-- * Меню пользователя   -->
+<!----------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------->
+<!-- МЕНЮ ПОЛЬЗОВАТЕЛЯ   -->
 <div class="drop__menu">
     <ul>
         <li><a href="setting.php">Настройки</a></li>
         <li><a href="../php/logout.php">Выход</a></li>
     </ul>
 </div>
+<!----------------------------------------------------------------------------------------->
+<!-- ОБАЛСТЬ ДЛЯ ТАБЛИЦ -->
 <section class="area">
     <div class="option-books">
         <ul>
             <li><a href="#" class="add">Добавить</a></li>
             <li><a href="#" class="edit">Изменить</a></li>
             <li><a href="#" class="delete">Удалить</a></li>
-            <form action="../php/delete_without_ajax.php" method="post">
-                <input type="text" name="name_book" id="" placeholder="Книгу крирорукий">
-                <input type="submit" value="Удалить без AJAX">
-            </form>
         </ul>
     </div>
     <div class="book-area">
+<!--        ТАБЛИЦА ПОЛЬЗОВАТЕЛЕЙ-->
         <?php
-        require_once 'php/getUsers.php';
+        require_once '../php/getUsers.php';
         $users = getUser();
-        $table = "<table class='table_users' border='2' style='color: white'>
+        $table_users = "<table class='table_users' border='2' style='color: white'>
                                <tr>
                                <th>id</th>
                                <th>Имя</th>
@@ -77,20 +76,53 @@ if($_SESSION['user']['status'] != 10){
                                 <td>" . $users[$index]['status'] . "</td>
                                 <td><a href='../php/delete_user.php?id=" . $users[$index]['id'] . "'>Удалить</a></td>
                             </tr>";
-            $table .= $line;
+            $table_users .= $line;
         }
-        $table .= $end_table;
-        echo $table;
+        $table_users .= $end_table;
+        echo $table_users;
+        ?>
+<!--        ТАБЛИЦА КНИГ-->
+        <?php
+        $table_books = "<table class='table_books' border='2' style='color: white'>
+                               <tr>
+                                   <th>id</th>
+                                   <th>Название книги</th>
+                                   <th>Жанр книги</th>
+                                   <th>Путь обложки</th>
+                                   <th>Удалить</th>
+                               </tr>";
+        $end_table = "</table>";
+        require_once '../php/checkBooks.php';
+        require '../php/connect.php';
+        $books = checkBooks($database);
+        $books = $books["books"];
+        for($index = 0; $index < count($books);$index++){
+            $lines = "<tr>
+                                <td>" . $books[$index]['id_book'] . "</td>
+                                <td>" . $books[$index]['title_book'] . "</td>
+                                <td>" . $books[$index]["genre_book"] . "</td>
+                                <td>" . $books[$index]['img_book'] . "</td>
+                                <td><a href='../php/delete_book.php?id=" . $books[$index]['id_book'] . "'>Удалить</a></td>
+                            </tr>";
+            $table_books .= $lines;
+        }
+        $table_books .= $end_table;
+        echo $table_books;
         ?>
     </div>
 </section>
+<!----------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------->
+<!-- ОБЛАСТЬ ДЛЯ ПОПАНОВ-->
 <div class="area-popOn">
     <div class="btnExit">
         <div></div>
     </div>
+    <!--        ПОПАН НА ДОБАВЛЕНИЕ КНИГИ-->
+    <!--        ------------------------------------------------------------------------------------------------------------- -->
     <div class="popOnAdd">
         <h1>Добавление книги</h1>
-        <form method="post" id="form-book" enctype="multipart/form-data">
+        <form method="post" id="form-add" enctype="multipart/form-data">
             <input type="text" name="name-book" id="name-book" placeholder="Введите название книги">
             <input type="text" name="name-author" id="name-author" placeholder="Введите ФИО Автора">
             <input type="text" name="genre-book" id="genre-book" placeholder="Введите жанр книги">
@@ -102,6 +134,9 @@ if($_SESSION['user']['status'] != 10){
             </button>
         </form>
     </div>
+    <!--        ------------------------------------------------------------------------------------------------------------- -->
+<!--        ПОПАН НА УДАЛЕНИЕ КНИГИ-->
+    <!--        ------------------------------------------------------------------------------------------------------------- -->
     <div class="popOnDelete">
         <h1>Удаление книги</h1>
         <form action="" id="form-book">
@@ -111,44 +146,11 @@ if($_SESSION['user']['status'] != 10){
             </button>
         </form>
     </div>
+    <!--        ------------------------------------------------------------------------------------------------------------- -->
 </div>
-<!-- ! ------------------------------------------------- -->
-<script>
-    $(document).ready(function(){
-        $('#btnFormDelete').on('click', function () {
-            let nameBook = $('#name-booker').val()
-            $.ajax({
-                method: 'POST',
-                url: '../php/delete_book.php',
-                data: {
-                    name_book: nameBook,
-                },
-            }).done(function (msg){
-                alert("Book deleted " + msg)
-            })
-        })
-        $('#btnFormAdd').on('click', function () {
-            let nameBook = $('#name-book').val()
-            let nameAuthor = $('#name-author').val()
-            let genreBook = $('#genre-book').val()
-            let yearBook = $('#year-book').val()
-            let description = $('#description-book').val()
-            $.ajax({
-                method: 'POST',
-                url: '../php/add_book.php',
-                data: {
-                    name_book: nameBook,
-                    name_author: nameAuthor,
-                    genre_book: genreBook,
-                    year_book: yearBook,
-                    desc: description,
-                },
-            }).done(function (msg){
-                alert("Data saved " + msg)
-            })
-        })
-    })
-</script>
+<!----------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------->
+<script src="../js/ajax_requests.js"></script>
 <script  src="../js/drop_menu-catalog.js"></script>
 <script  src="../js/popOns.js"></script>
 </body>

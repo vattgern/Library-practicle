@@ -51,7 +51,7 @@ body{
 .book__area{
     margin-top: 10%;
     width: 95%;
-    height: 900px;
+    height: 1200px;
     background-color: white;
 }
 .books__title{
@@ -81,7 +81,7 @@ body{
     color: white;
 }
 .book__img{
-    height: 40%;
+    height: 70%;
     overflow: hidden;
 }
 .book__img img{
@@ -90,7 +90,7 @@ body{
     overflow: hidden;
 }
 .book__info{
-    height: 60%;
+    height: 30%;
     display: flex;
     flex-direction: column;
 }

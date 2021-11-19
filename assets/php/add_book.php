@@ -48,12 +48,20 @@ function checkCountAuthors($arr, $db){
     }
 }
 $data = [
-    "name_book" => $_POST['name_book'],
-    "genre_book" =>$_POST['genre_book'],
-    "desc" =>$_POST['desc'],
-    "year_book" =>$_POST['year_book'],
-    "name_author" => $_POST['name_author'],
+    "name_book" => $_POST['name-book'],
+    "genre_book" =>$_POST['genre-book'],
+    "desc" =>$_POST['description-book'],
+    "year_book" =>$_POST['year-book'],
+    "name_author" => $_POST['name-author'],
 ];
+$path = 'assets/vendor/books/' . uniqid() . $_FILES['img-book']['name'];
+?>
+<pre>
+    <?php
+        print_r($_FILES);
+    ?>
+</pre>
+<?php
 if(count(checkCountAuthors($data,$database)) > 0){
     $arrAuthors = checkCountAuthors($data,$database);
     for ($index = 0;$index < count($arrAuthors); $index++){
@@ -64,8 +72,9 @@ if(count(checkCountAuthors($data,$database)) > 0){
             $idAuthor = $idAuthor_fk->fetch(PDO::FETCH_ASSOC);
             $idAuthor['id_author'] = (int) $idAuthor['id_author'];
             if(!checkBook($data['name_book'],$data['genre_book'],$data['year_book'],$database)){
+                move_uploaded_file($_FILES['img-book']['tmp_name'],'../../'.$path);
                 // ВСТАВЛЯЕМ КНИГУ В БАЗУ ДАННЫХ
-                $database->query("INSERT INTO `books` (`id_book`, `title_book`, `genre_book`, `desc_book`, `img_book`, `year_book`) VALUES (NULL, '{$data['name_book']}', '{$data['genre_book']}', '{$data['desc']}', '' , '{$data['year_book']}')");
+                $database->query("INSERT INTO `books` (`id_book`, `title_book`, `genre_book`, `desc_book`, `img_book`, `year_book`) VALUES (NULL, '{$data['name_book']}', '{$data['genre_book']}', '{$data['desc']}', '$path' , '{$data['year_book']}')");
             }
             // СРАЗУ ПОЛУЧАЕМ ID КНИГИ
             $idBook_fk = $database->query("SELECT `id_book` FROM `books` WHERE `title_book` LIKE '{$data['name_book']}'");
@@ -75,7 +84,8 @@ if(count(checkCountAuthors($data,$database)) > 0){
             $database->query("INSERT INTO `usersbooks` (`id_b`, `id_a`) VALUES ('{$id_book['id_book']}', '{$idAuthor['id_author']}')");
         } else{
             // ДОБАВЛЯЕМ КНИГУ И АВТОРА В БАЗУ ДАННЫХ
-            $database->query("INSERT INTO `books` (`id_book`, `title_book`, `genre_book`, `desc_book`, `img_book`, `year_book`) VALUES (NULL, '{$data['name_book']}', '{$data['genre_book']}', '{$data['desc']}', '' , '{$data['year_book']}')");
+            move_uploaded_file($_FILES['img-book']['tmp_name'],'../../'.$path);
+            $database->query("INSERT INTO `books` (`id_book`, `title_book`, `genre_book`, `desc_book`, `img_book`, `year_book`) VALUES (NULL, '{$data['name_book']}', '{$data['genre_book']}', '{$data['desc']}', '$path' , '{$data['year_book']}')");
             $database->query("INSERT INTO `authors` (`id_author`, `name_author`) VALUES (NULL , '{$arrAuthors[$index]}')");
             // ПОЛУЧАЕМ ИХ ID
             $answerOne = $database->query("SELECT `id_author` FROM `authors` WHERE `name_author` LIKE '{$arrAuthors[$index]}'");

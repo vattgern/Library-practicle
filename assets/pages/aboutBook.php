@@ -78,7 +78,7 @@ if(!empty($_SESSION['user'])){
 <!--* СЕКЦИЯ О КНИГЕ-->
 <section>
     <aside>
-        <img src="" alt="">
+        <img src="<?= '../../' . $_REQUEST['img_book'] ?>" alt="">
     </aside>
     <article>
         <div class="book__title"><strong>Название произведения:</strong>  <?= $_REQUEST['name-book'] ?></div>

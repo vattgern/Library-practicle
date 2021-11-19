@@ -122,22 +122,21 @@ if(!empty($_SESSION['user'])){
                         }
                     }
                 }
-//                for($item=0;$item < count($ships); $item++){
-//                    $id_a = $ships[$item]['id_a'];
-//                    if($id_a == $authors[$item]['id_author']){
-//                        $fullAuthors .= $authors[$item]['name_author'] .',';
-//                    }
-//                }
                 $fullAuthors = str_replace(',','',$fullAuthors);
                 $url = 'assets/pages/aboutBook.php?name-book='.$books[$index]['title_book']
                         .'&genre-book=' . $books[$index]['genre_book']
                         .'&year-book=' . $books[$index]['year_book']
                         .'&name-authors=' . $fullAuthors
-                        .'&desc=' . $books[$index]['desc_book'];
+                        .'&desc=' . $books[$index]['desc_book']
+                        .'&img_book=' . $books[$index]['img_book'];
+                $img_url = '';
+                if(!empty($books[$index]['img_book'])){
+                    $img_url = $books[$index]['img_book'];
+                }
                 $book = '
                 <div class="books book__1">
                     <div class="book__img">
-                        <img src="" alt="">
+                        <img src="' . $img_url .'" alt="">
                     </div>
                     <div class="book__info">
                         <h1 class="book__title">' . $books[$index]['title_book'] . '</h1>
