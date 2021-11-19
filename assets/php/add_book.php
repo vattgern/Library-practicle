@@ -59,6 +59,7 @@ $path = 'assets/vendor/books/' . uniqid() . $_FILES['img-book']['name'];
 <pre>
     <?php
         print_r($_FILES);
+        print_r($_POST);
     ?>
 </pre>
 <?php

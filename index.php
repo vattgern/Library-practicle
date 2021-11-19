@@ -184,7 +184,7 @@ if(!empty($_SESSION['user'])){
 <footer>
     <div class="footer__name">
         <p>Выполнил:</p>
-        <a href="#">Лиджиев Александр</a>
+        <a href="https://github.com/vattgern">Лиджиев Александр</a>
     </div>
     <div class="footer__links">
         <ul>

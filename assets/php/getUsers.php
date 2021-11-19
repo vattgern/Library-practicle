@@ -1,7 +1,4 @@
 <?php
-if($_SESSION['user']['status'] != 10){
-    header("Location: ../../index.php");
-}
 function getUser(){
     require 'connect.php';
     $users = [];

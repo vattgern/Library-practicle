@@ -50,65 +50,17 @@ if($_SESSION['user']['status'] != 10){
     <div class="option-books">
         <ul>
             <li><a href="#" class="add">Добавить</a></li>
-            <li><a href="#" class="edit">Изменить</a></li>
+            <li><a href="#" class="edit">GET</a></li>
             <li><a href="#" class="delete">Удалить</a></li>
         </ul>
     </div>
     <div class="book-area">
 <!--        ТАБЛИЦА ПОЛЬЗОВАТЕЛЕЙ-->
-        <?php
-        require_once '../php/getUsers.php';
-        $users = getUser();
-        $table_users = "<table class='table_users' border='2' style='color: white'>
-                               <tr>
-                               <th>id</th>
-                               <th>Имя</th>
-                               <th>Почта</th>
-                               <th>Статус</th>
-                               <th>Удалить</th>
-                                </tr>";
-        $end_table = "</table>";
-        for($index = 0;$index < count($users); $index++){
-            $line = "<tr>
-                                <td>" . $users[$index]['id'] . "</td>
-                                <td>" . $users[$index]['name'] . "</td>
-                                <td>" . $users[$index]["email"] . "</td>
-                                <td>" . $users[$index]['status'] . "</td>
-                                <td><a href='../php/delete_user.php?id=" . $users[$index]['id'] . "'>Удалить</a></td>
-                            </tr>";
-            $table_users .= $line;
-        }
-        $table_users .= $end_table;
-        echo $table_users;
-        ?>
+        <table class='table_users' border='2' style='color: white'></table>
 <!--        ТАБЛИЦА КНИГ-->
-        <?php
-        $table_books = "<table class='table_books' border='2' style='color: white'>
-                               <tr>
-                                   <th>id</th>
-                                   <th>Название книги</th>
-                                   <th>Жанр книги</th>
-                                   <th>Путь обложки</th>
-                                   <th>Удалить</th>
-                               </tr>";
-        $end_table = "</table>";
-        require_once '../php/checkBooks.php';
-        require '../php/connect.php';
-        $books = checkBooks($database);
-        $books = $books["books"];
-        for($index = 0; $index < count($books);$index++){
-            $lines = "<tr>
-                                <td>" . $books[$index]['id_book'] . "</td>
-                                <td>" . $books[$index]['title_book'] . "</td>
-                                <td>" . $books[$index]["genre_book"] . "</td>
-                                <td>" . $books[$index]['img_book'] . "</td>
-                                <td><a href='../php/delete_book.php?id=" . $books[$index]['id_book'] . "'>Удалить</a></td>
-                            </tr>";
-            $table_books .= $lines;
-        }
-        $table_books .= $end_table;
-        echo $table_books;
-        ?>
+        <table class='table_books' border='2' style='color: white'>
+
+        </table>
     </div>
 </section>
 <!----------------------------------------------------------------------------------------->

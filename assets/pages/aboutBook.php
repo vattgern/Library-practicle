@@ -13,6 +13,7 @@ $_REQUEST['name-authors'] = str_replace(',','',$_REQUEST['name-authors']);
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/about_book.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <?php if(!empty($_SESSION['user'])){
         echo '<link rel="stylesheet" href="../css/header.css">';
     } else{
@@ -84,7 +85,7 @@ if(!empty($_SESSION['user'])){
         <div class="book__title"><strong>Название произведения:</strong>  <?= $_REQUEST['name-book'] ?></div>
         <div class="genre__book"><strong>Жанр произведения:</strong>  <?= $_REQUEST['genre-book'] ?></div>
         <div class="year__book"><strong>Год издания:</strong>  <?= $_REQUEST['year-book'] ?></div>
-        <div class="authors__book"><strong>Автор:</strong>  <?=$_REQUEST['name-authors']?></div>
+        <div class="authors__book"><strong>Автор:</strong>  <?= $_REQUEST['name-authors']?></div>
     </article>
 </section>
 <!-- !------------------------------------------------------------------- -->
@@ -93,9 +94,8 @@ if(!empty($_SESSION['user'])){
 <div class="description">
     <h1>Описание</h1>
     <p>
-        <?= $_REQUEST['desc'] ?>
+        <?= $_REQUEST['desc']  ?>
     </p>
-
 </div>
 <!-- !------------------------------------------------------------------- -->
 <!-- * Подвал -->

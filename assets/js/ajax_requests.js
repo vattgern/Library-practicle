@@ -1,14 +1,31 @@
-$(document).ready(function(){
-    $('#btnFormDelete').on('click', function () {
-        let nameBook = $('#name-booker').val()
+$(document).ready(function(event){
+    $.ajax({
+        method: 'GET',
+        url: '../php/view_books.php'
+    }).done((data)=>{
+        document.querySelector(".table_books").innerHTML = data
+    })
+    $.ajax({
+        method: 'GET',
+        url: '../php/view_users.php'
+    }).done((data)=>{
+        document.querySelector(".table_users").innerHTML = data
+    })
+    $('#form-book').on('submit', function (event) {
+        event.preventDefault();
+        let fd = new FormData($('#form-book')[0])
+
         $.ajax({
             method: 'POST',
             url: '../php/delete_book.php',
-            data: {
-                name_book: nameBook,
-            },
-        }).done(function (msg){
-            alert("Book deleted " + msg)
+            data: fd,
+        }).done(function (){
+            $.ajax({
+                method: 'GET',
+                url: '../php/view_books.php'
+            }).done((data)=>{
+                document.querySelector(".table_books").innerHTML = data
+            })
         })
         document.querySelector(".area-popOn").classList.remove("popOnOpen")
     })
@@ -22,10 +39,22 @@ $(document).ready(function(){
             contentType: false,
             processData: false,
             success: function (){
-                alert("Data saved!!!");
+                $.ajax({
+                    method: 'GET',
+                    url: '../php/view_books.php'
+                }).done((data)=>{
+                    document.querySelector(".table_books").innerHTML = data
+                })
             }
         })
         document.querySelector(".area-popOn").classList.remove("popOnOpen")
     })
-
+    document.querySelector(".edit").addEventListener("click",()=>{
+        $.ajax({
+            method: 'GET',
+            url: '../php/view_books.php'
+        }).done((data)=>{
+            document.querySelector(".table_books").innerHTML = data
+        })
+    })
 })

@@ -51,7 +51,7 @@ body{
 .book__area{
     margin-top: 10%;
     width: 95%;
-    height: 1200px;
+    height: 1500px;
     background-color: white;
 }
 .books__title{
@@ -68,8 +68,8 @@ body{
     height: 92.5%;
     background-color: whitesmoke;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(2,1fr);
+    grid-template-columns: repeat(5,1fr);
+    grid-template-rows: repeat(3,1fr);
     gap: 2.5% 1%;
 }
 .books{
@@ -99,14 +99,18 @@ body{
 }
 .book__title{
     font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
 }
 .authors{
+    font-size: 12px;
     font-family: 'Montserrat', sans-serif;
 }
 .genre__book{
+    font-size: 10px;
     font-family: 'Montserrat', sans-serif;
 }
 .year__book{
+    font-size: 8px;
     margin-top: 2.5%;
     font-family: 'Montserrat', sans-serif;
 }
