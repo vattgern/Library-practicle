@@ -14,6 +14,7 @@ $_REQUEST['name-authors'] = str_replace(',','',$_REQUEST['name-authors']);
     <link rel="stylesheet" href="../css/about_book.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    // ПОДКЛЮЧЕАЕМ ОПРЕДЕЛЕННЫЙ CSS ЕСЛИ МЫ ВОШЛИ В АККАУНТ
     <?php if(!empty($_SESSION['user'])){
         echo '<link rel="stylesheet" href="../css/header.css">';
     } else{
@@ -24,6 +25,7 @@ $_REQUEST['name-authors'] = str_replace(',','',$_REQUEST['name-authors']);
 <body>
 <!-- !------------------------------------------------------------------- -->
 <!-- * Шапка -->
+<!--ОПРЕДЕЛЕННЫЙ HEADER ЕСЛИ МЫ ВОШЛИ В АККАУНТ-->
 <?php
 $header_without_user = '<header>
                                 <div class="logo">
@@ -64,6 +66,7 @@ if(empty($_SESSION['user'])){
 <!-- !------------------------------------------------------------------- -->
 <!-- !------------------------------------------------------------------- -->
 <!-- * DROP MENU -->
+<!-- DROP-MENU ЕСЛИ МЫ ВОШЛИ В АККАУНТ-->
 <?php
 if(!empty($_SESSION['user'])){
     echo '    <div class="drop__menu">
@@ -117,6 +120,7 @@ if(!empty($_SESSION['user'])){
 <!-- !------------------------------------------------------------------- -->
 <!-- !------------------------------------------------------------------- -->
 <!-- * СКРИПТЫ-->
+    <!-- ПОДКЛЮЧАЕМ SCRIPT ЕСЛИ МЫ ВОШЛИ В АККАУНТ -->
     <?php
     if(!empty($_SESSION['user'])){
         echo '<script src="../js/drop_menu-catalog.js"></script>';

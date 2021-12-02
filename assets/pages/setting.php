@@ -50,6 +50,8 @@ if(empty($_SESSION['user'])){
                 <div class="result">
                     <img src="<?= '/' . $_SESSION['user']['avatar'] ?>" alt="">
                 </div>
+                <!-- ----------------------------------------------------------------------------------------- -->
+                <!-- ФОРМА ИЗМЕНЕНИЯ АВАТАРА-->
                 <form action="../php/changeAvatar.php" method="post" enctype="multipart/form-data">
                     <input type="file" name="file" id="file" class="input-file">
                     <label for="file" class="btn btn-tertiary js-labelFile">
@@ -58,6 +60,8 @@ if(empty($_SESSION['user'])){
                     </label>
                     <input type="submit" value="Изменить аватар">
                 </form>
+                <!-- ----------------------------------------------------------------------------------------- -->
+                <!-- СООБЩЕНИЕ О РЕЗУЛЬТАТЕ ИЗМЕНЕНИЯ-->
                 <?php
                     if(!empty($_SESSION['message'])){
                         echo "<strong style='color: red; font-size: 1.25rem; text-align: center'>{$_SESSION['message']}</strong>";
@@ -66,8 +70,11 @@ if(empty($_SESSION['user'])){
                         $_SESSION['message'] = '';
                     }
                 ?>
+                <!-- ----------------------------------------------------------------------------------------- -->
             </div>
             <div class="block_name">
+                <!-- ----------------------------------------------------------------------------------------- -->
+                <!-- ФОРМА ИЗМЕНЕНИЯ ФАМИЛИИ И ИМЕНИ-->
                 <form action="../php/changeName.php" method="post">
                     <label for="newFirstNameName">Изменить имя:</label>
                     <input type="text" name="newFirstName" id="newFirstName">
@@ -75,6 +82,7 @@ if(empty($_SESSION['user'])){
                     <input type="text" name="newLastName" id="newLastName">
                     <input type="submit" value="Изменить имя">
                 </form>
+                <!-- ----------------------------------------------------------------------------------------- -->
                 <?php
                     if(!empty($_SESSION['message'])){
                         echo "<strong style='color: red; font-size: 1.25rem; text-align: center'>{$_SESSION['message']}</strong>";

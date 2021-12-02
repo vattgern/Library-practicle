@@ -1,3 +1,4 @@
+// ПЕРЕКЛЮЧЕНИЯ СТРАНИЦ В НАСТРОЙКАХ ПОЛЬЗОВАТЕЛЯ
 document.addEventListener("DOMContentLoaded",()=>{
     const settingMenu = document.querySelectorAll(".setting__menu li");
     const pages = document.querySelectorAll("article > div");

@@ -1,21 +1,11 @@
 <?php
 session_start();
 require_once 'assets/php/checkBooks.php';
+// ПРОВЕРКА КНИГ В БД
 if(is_array(checkBooks($database))){
     $_SESSION['data'] = checkBooks($database);
 }
 ?>
-<!--<pre>//=
-//        print_r($_SESSION['data']);
-//
-</pre>-->
-<!--TODO:
-        1- Доделать карточку товара*
-        2- Создать админа и пользователя*
-        3- Почистить код*
-        4- Поиск книг*
-        5- По желанию сделать защиту запросов
--->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -27,6 +17,7 @@ if(is_array(checkBooks($database))){
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <?php
+//    ЕСЛИ МЫ ВОШЛИ ТО ПОДЛЮЧАЕМ ТАКОЙ-ТО CSS СТИЛЬ
     if(!empty($_SESSION['user'])){
         echo '<link rel="stylesheet" href="assets/css/header.css">';
     } else{
@@ -37,6 +28,7 @@ if(is_array(checkBooks($database))){
 <body>
 <!-- !------------------------------------------------------------------- -->
 <!-- * Шапка -->
+<!-- ВЫВОД ОПРЕДЕЛЕННОЙ ШАПКИ ЕСЛИ МЫ ВОШЛИ В ПРОФИЛЬ-->
 <?php
     $header_without_user = '<header>
                                 <div class="logo">
@@ -75,6 +67,7 @@ if(is_array(checkBooks($database))){
     }
 ?>
 <!-- !------------------------------------------------------------------- -->
+<!-- МЕНЮ УПРАВЛЕНИЯ ЕСЛИ МЫ ВОШЛИ-->
 <?php
 if(!empty($_SESSION['user'])){
     echo '    <div class="drop__menu">
@@ -100,6 +93,7 @@ if(!empty($_SESSION['user'])){
         <h1>Наши рекомендации</h1>
     </div>
     <div class="book__list">
+<!--        ВЫВОД КНИГ-->
         <?php
             $books = $_SESSION['data']['books'];
             $authors = $_SESSION['data']['authors'];
@@ -112,6 +106,8 @@ if(!empty($_SESSION['user'])){
                         array_push($id_author,$ships[$i]['id_a']);
                     }
                 }
+                //------------------------------------------------------------
+                //ГЕНЕРИРУЕМ ИМЕНА АВТОРА
                 $fullAuthors = '';
                 for($item =0;$item< count($ships);$item++){
                     if($books[$index]['id_book'] == $ships[$item]['id_b']){
@@ -122,6 +118,7 @@ if(!empty($_SESSION['user'])){
                         }
                     }
                 }
+                //------------------------------------------------------------
                 $fullAuthors = str_replace(',','',$fullAuthors);
                 $url = 'assets/pages/aboutBook.php?name-book='.$books[$index]['title_book']
                         .'&genre-book=' . $books[$index]['genre_book']
@@ -133,6 +130,8 @@ if(!empty($_SESSION['user'])){
                 if(!empty($books[$index]['img_book'])){
                     $img_url = $books[$index]['img_book'];
                 }
+                // ----------------------------------------------------
+                // ГЕНЕРИРУЕМ HTML СКЕЛЕТ КНИГИ
                 $book = '
                 <div class="books book__1">
                     <div class="book__img">
@@ -146,22 +145,12 @@ if(!empty($_SESSION['user'])){
                         <a href="' . $url .'" class="link__description">Подробнее</a>
                     </div>
                 </div>';
+                // ----------------------------------------------------
                 if(!$fullAuthors == ''){
                     echo $book;
                 }
             }
         ?>
-<!--        <div class="books book__1">-->
-<!--            <div class="book__img">-->
-<!--                <img src="" alt="">-->
-<!--            </div>-->
-<!--            <div class="book__info">-->
-<!--                <h1 class="book__title"></h1>-->
-<!--                <p class="genre__book">Жанр</p>-->
-<!--                <sub class="year__book">2077</sub>-->
-<!--                <a href="" class="link__description">Подробнее</a>-->
-<!--            </div>-->
-<!--        </div>-->
     </div>
 </section>
 <!-- !------------------------------------------------------------------- -->
@@ -199,6 +188,7 @@ if(!empty($_SESSION['user'])){
 <!-- !------------------------------------------------------------------- -->
 <script src="assets/js/search_app.js"></script>
 <?php
+// ЕСЛИ МЫ ВОШЛИ ТО ПОДКЛЮЧАЕМ JS ФАЙЛ ДЛЯ МЕНЮ НАСТРОЕК
 if(!empty($_SESSION['user'])){
     echo '<script src="assets/js/drop_menu-catalog.js"></script>';
 }
